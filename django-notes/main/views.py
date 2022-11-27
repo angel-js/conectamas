@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from main.forms import UsuarioForm
+from main.models import Familiar
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
@@ -15,9 +16,17 @@ def create_usuario(request):
             new_paciente = form.save(commit=False)
             new_paciente.user = request.user
             new_paciente.save()
-            return redirect('tasks')
+            #return redirect('home/')
+            return render(request, 'paciente/familiarUsuario.html')
         except ValueError:
             return render(request, 'paciente/create_paciente.html', {"form": UsuarioForm, "error": "Error creando al paciente!"})
+
+
+@login_required
+def usuario(request):
+    usuario = Familiar.objects.filter(user=request.user, datecompleted__isnull=True)
+    return render(request, 'paciente/familiarUsuario.html', {"usuario": usuario})
+
 
 # Ver pacientes
 @login_required

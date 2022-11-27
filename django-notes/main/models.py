@@ -36,7 +36,7 @@ class Persona(models.Model):
     edad = models.IntegerField()
     fecha_nacimiento = models.DateField()
     sexo = models.CharField(max_length=10)
-    id_rol = models.ForeignKey(Rol, on_delete=models.CASCADE)
+    id_rol = models.ForeignKey(Rol, on_delete=models.CASCADE, default=1)
 
     class Meta:
         db_table = 'persona'
@@ -53,3 +53,11 @@ class Usuario(Persona):
         abstract = True
         verbose_name_plural = "Usuarios"
         ordering= ["email"]
+
+class Familiar(Usuario):
+    relacion_paciente = models.CharField(max_length=30)
+
+    class Meta:
+        db_table = 'familiar'
+        verbose_name_plural = "Familiares"
+        ordering= ["relacion_paciente"]
