@@ -15,18 +15,24 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from tasks import views
+from tasks.views import home, signup, tasks, tasks_completed, signout, signin , create_task, task_detail, complete_task, delete_task
+from main.views import  create_usuario, complete_usuario
 
 urlpatterns = [
-    path('home/', views.home, name='home'),
+    path('home/', home, name='home'),
     path('admin/', admin.site.urls),
-    path('signup/', views.signup, name='signup'),
-    path('tasks/', views.tasks, name='tasks'),
-    path('tasks_completed/', views.tasks_completed, name='tasks_completed'),
-    path('logout/', views.signout, name='logout'),
-    path('signin/', views.signin, name='signin'),
-    path('create_task/', views.create_task, name='create_task'),
-    path('tasks/<int:task_id>', views.task_detail, name='task_detail'),
-    path('taks/<int:task_id>/complete', views.complete_task, name='complete_task'),
-    path('tasks/<int:task_id>/delete', views.delete_task, name='delete_task'),
+    path('signup/', signup, name='signup'),
+    path('tasks/', tasks, name='tasks'),
+    path('tasks_completed/', tasks_completed, name='tasks_completed'),
+    path('logout/', signout, name='logout'),
+    path('signin/', signin, name='signin'),
+    path('create_task/', create_task, name='create_task'),
+    path('tasks/<int:task_id>', task_detail, name='task_detail'),
+    path('taks/<int:task_id>/complete', complete_task, name='complete_task'),
+    path('tasks/<int:task_id>/delete', delete_task, name='delete_task'),
+
+    #Paciente
+    path('create_usuario/', create_usuario, name='create_usuario'),
+    path('usuario/<int:task_id>/complete', complete_usuario, name='complete_usuario'),
+
 ]
