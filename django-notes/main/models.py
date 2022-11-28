@@ -9,8 +9,8 @@ class Comment(models.Model):
     comentario = models.CharField( max_length=300)  # Field name made lowercase.
 
     class Meta:
-        db_table = 'comentario'
-        verbose_name_plural = "Comentarios"
+        db_table = 'comment'
+        verbose_name_plural = "Comments"
         ordering= ["estado"]
 
     def __str__(self):
