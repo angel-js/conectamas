@@ -13,10 +13,9 @@ def create_usuario(request):
     else:
         try:
             form = UsuarioForm(request.POST)
-            new_paciente = form.save(commit=False)
+            new_paciente = form.save()
             new_paciente.user = request.user
             new_paciente.save()
-            #return redirect('home/')
             return render(request, 'paciente/familiarUsuario.html')
         except ValueError:
             return render(request, 'paciente/create_paciente.html', {"form": UsuarioForm, "error": "Error creando su Usuario!"})

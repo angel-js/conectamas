@@ -1,9 +1,9 @@
 from django.contrib import admin
-from .models import Comentario, Familiar, Rol, Funcionario
+from .models import Familiar, Rol, Funcionario, Paciente, Comment
 
 # Register your models here.
 
-class ComentarioAdmin(admin.ModelAdmin):
+class CommentAdmin(admin.ModelAdmin):
     list_display = ('id', 'estado',)
     list_filter = ('id',)
 
@@ -27,10 +27,10 @@ class FuncionarioAdmin(admin.ModelAdmin):
     list_display = ('id', 'cargo',)
     list_filter = ('id',)
 
-""" class PacienteAdmin(admin.ModelAdmin):
+class PacienteAdmin(admin.ModelAdmin):
     list_display = ('id', 'nombre', 'rut',)
     list_filter = ('id',)
- """
+
 """ class RegionAdmin(admin.ModelAdmin):
     list_display = ('id', 'nombre_region',)
     list_filter = ('id', 'nombre_region',)
@@ -48,14 +48,14 @@ class PatologiaAdmin(admin.ModelAdmin):
     list_filter = ('id', 'nombre_patologia',) """
 
 
-admin.site.register(Comentario, ComentarioAdmin)
+admin.site.register(Comment, CommentAdmin)
 admin.site.register(Rol, RolAdmin)
 admin.site.register(Familiar, FamiliarAdmin)
 admin.site.register(Funcionario, FuncionarioAdmin)
+admin.site.register(Paciente, PacienteAdmin)
 #admin.site.register(Comuna, ComunaAdmin)
 #admin.site.register(Ficha, FichaAdmin)
 #admin.site.register(Ingreso, IngresoAdmin)
 #admin.site.register(Region, RegionAdmin)
-#admin.site.register(Paciente, PacienteAdmin)
 #admin.site.register(Patologia)
 #admin.site.register(Sintoma)

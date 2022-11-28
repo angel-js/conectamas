@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 
-class Comentario(models.Model):
+class Comment(models.Model):
     fecha_comentario = models.DateField()
     hora_comentario = models.TimeField()
     estado = models.CharField(max_length=20)  # Field name made lowercase.
