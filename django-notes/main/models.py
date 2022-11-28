@@ -2,15 +2,15 @@ from django.db import models
 
 # Create your models here.
 
-class Comment(models.Model):
+class Comentario(models.Model):
     fecha_comentario = models.DateField()
     hora_comentario = models.TimeField()
     estado = models.CharField(max_length=20)  # Field name made lowercase.
     comentario = models.CharField( max_length=300)  # Field name made lowercase.
 
     class Meta:
-        db_table = 'comment'
-        verbose_name_plural = "Comments"
+        db_table = 'Comentario'
+        verbose_name_plural = "Comentarios"
         ordering= ["estado"]
 
     def __str__(self):

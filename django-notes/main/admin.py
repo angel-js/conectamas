@@ -1,9 +1,9 @@
 from django.contrib import admin
-from .models import Familiar, Rol, Funcionario, Paciente, Comment
+from .models import Familiar, Rol, Funcionario, Paciente, Comentario
 
 # Register your models here.
 
-class CommentAdmin(admin.ModelAdmin):
+class ComentarioAdmin(admin.ModelAdmin):
     list_display = ('id', 'estado',)
     list_filter = ('id',)
 
@@ -48,7 +48,7 @@ class PatologiaAdmin(admin.ModelAdmin):
     list_filter = ('id', 'nombre_patologia',) """
 
 
-admin.site.register(Comment, CommentAdmin)
+admin.site.register(Comentario, ComentarioAdmin)
 admin.site.register(Rol, RolAdmin)
 admin.site.register(Familiar, FamiliarAdmin)
 admin.site.register(Funcionario, FuncionarioAdmin)
