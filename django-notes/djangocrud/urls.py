@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from tasks.views import home, signup, tasks, tasks_completed, signout, signin , create_task, task_detail, complete_task, delete_task
-from main.views import  create_usuario, complete_usuario
+from main.views import  create_usuario, complete_usuario, main_funcionario, create_paciente
 
 urlpatterns = [
     path('home/', home, name='home'),
@@ -33,6 +33,9 @@ urlpatterns = [
 
     #Paciente
     path('create_usuario/', create_usuario, name='create_usuario'),
+    path('create_paciente/', create_paciente, name='create_paciente'),
+    path('main_funcionario/', main_funcionario, name='main_funcionario'),
     path('usuario/<int:task_id>/complete', complete_usuario, name='complete_usuario'),
+    #path('usuario/<int:usuario_id>', task_detail, name='usuario_detail'),
 
 ]

@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from main.models import Familiar
+from main.models import Familiar, Paciente
 from django import forms 
 
 class UsuarioForm(ModelForm):
@@ -9,3 +9,8 @@ class UsuarioForm(ModelForm):
     class Meta:
         model = Familiar
         fields = ['rut', 'nombre', 'apellido', 'edad', 'fecha_nacimiento', 'sexo', 'email', 'relacion_paciente']
+
+class PacienteForm(ModelForm):
+    class Meta:
+        model = Paciente
+        fields = ['rut', 'nombre', 'apellido', 'edad', 'fecha_nacimiento', 'sexo', 'sexo_biologico']

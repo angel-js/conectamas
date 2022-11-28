@@ -6,6 +6,8 @@ from django.db import IntegrityError
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from .models import Task
+from main.views import main_funcionario
+from django.contrib import auth
 
 from .forms import TaskForm
 
@@ -23,11 +25,12 @@ def signup(request):
                     request.POST["username"], password=request.POST["password1"])
                 user.save()
                 login(request, user)
-                return redirect('tasks')
+                return redirect('create_usuario')
             except IntegrityError:
                 return render(request, 'signup.html', {"form": UserCreationForm, "error": "Username already exists."})
 
         return render(request, 'signup.html', {"form": UserCreationForm, "error": "Passwords did not match."})
+
 
 
 @login_required
@@ -72,11 +75,15 @@ def signin(request):
     else:
         user = authenticate(
             request, username=request.POST['username'], password=request.POST['password'])
+        user1 = User 
         if user is None:
             return render(request, 'signin.html', {"form": AuthenticationForm, "error": "Username or password is incorrect."})
-
-        login(request, user)
-        return redirect('tasks')
+        elif user1.is_staff:
+            login(request, user)
+            return redirect('main_funcionario')
+        else:
+            login(request, user)
+            return redirect('tasks')
 
 @login_required
 def task_detail(request, task_id):

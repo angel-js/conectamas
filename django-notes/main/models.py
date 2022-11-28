@@ -61,3 +61,19 @@ class Familiar(Usuario):
         db_table = 'familiar'
         verbose_name_plural = "Familiares"
         ordering= ["relacion_paciente"]
+
+class Funcionario(Usuario):
+    cargo = models.CharField(max_length=30)
+
+    class Meta:
+        db_table = 'funcionario'
+        verbose_name_plural = "Funcionarios"
+        ordering= ["cargo"]
+
+class Paciente(Persona):
+    sexo_biologico = models.CharField(max_length=20)
+
+    class Meta:
+        db_table = 'paciente'
+        verbose_name_plural = "Pacientes"
+        ordering= ["id"]

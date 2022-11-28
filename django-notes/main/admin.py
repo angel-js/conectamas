@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Comentario, Familiar, Rol
+from .models import Comentario, Familiar, Rol, Funcionario
 
 # Register your models here.
 
@@ -23,10 +23,10 @@ class FamiliarAdmin(admin.ModelAdmin):
     list_display = ('id', 'id_paciente',)
     list_filter = ('id',) """
 
-""" class FuncionarioAdmin(admin.ModelAdmin):
+class FuncionarioAdmin(admin.ModelAdmin):
     list_display = ('id', 'cargo',)
     list_filter = ('id',)
- """
+
 """ class PacienteAdmin(admin.ModelAdmin):
     list_display = ('id', 'nombre', 'rut',)
     list_filter = ('id',)
@@ -49,12 +49,12 @@ class PatologiaAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Comentario, ComentarioAdmin)
-#admin.site.register(Comuna, ComunaAdmin)
-admin.site.register(Familiar, FamiliarAdmin)
-#admin.site.register(Ficha, FichaAdmin)
-#admin.site.register(Funcionario, FuncionarioAdmin)
-#admin.site.register(Ingreso, IngresoAdmin)
 admin.site.register(Rol, RolAdmin)
+admin.site.register(Familiar, FamiliarAdmin)
+admin.site.register(Funcionario, FuncionarioAdmin)
+#admin.site.register(Comuna, ComunaAdmin)
+#admin.site.register(Ficha, FichaAdmin)
+#admin.site.register(Ingreso, IngresoAdmin)
 #admin.site.register(Region, RegionAdmin)
 #admin.site.register(Paciente, PacienteAdmin)
 #admin.site.register(Patologia)
