@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Task
 from main.views import main_funcionario
 from django.contrib import auth
-
+from main.models import Funcionario
 from .forms import TaskForm
 
 # Create your views here.
@@ -75,15 +75,14 @@ def signin(request):
     else:
         user = authenticate(
             request, username=request.POST['username'], password=request.POST['password'])
-        user1 = User 
         if user is None:
             return render(request, 'signin.html', {"form": AuthenticationForm, "error": "Username or password is incorrect."})
-        elif user1.is_staff:
+        elif user.is_staff:
             login(request, user)
             return redirect('main_funcionario')
         else:
             login(request, user)
-            return redirect('tasks')
+            return redirect('home')
 
 @login_required
 def task_detail(request, task_id):

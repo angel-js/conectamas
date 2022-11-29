@@ -8,7 +8,7 @@ class UsuarioForm(ModelForm):
 
     class Meta:
         model = Familiar
-        fields = ['rut', 'nombre', 'apellido', 'edad', 'fecha_nacimiento', 'sexo', 'email', 'relacion_paciente']
+        fields = ['rut', 'nombre', 'apellido', 'edad', 'fecha_nacimiento', 'sexo', 'email', 'relacion_paciente' ]
 
 class PacienteForm(ModelForm):
     class Meta:

@@ -31,12 +31,41 @@ def usuario(request):
 
 # Ver Familiares
 @login_required
+def familiaresListado(request):
+    fam = Familiar.objects.all()
+    return render(request, 'funcionario/listadoFuncionarios.html', {"fam": fam})
+
+@login_required
 def complete_usuario(request, usuario_id):
     usuario = get_object_or_404(Usuario, pk=usuario_id, user=request.user)
     if request.method == 'POST':
         usuario.datecompleted = timezone.now()
         usuario.save()
-        return redirect('tasks')
+        return redirect('main_funcionario')
+
+@login_required
+def usuario_detail(request, usuario_id):
+    if request.method == 'GET':
+        familiar = get_object_or_404(Familiar, pk=Familiar_id, user=request.user)
+        form = UsuarioForm(instance=Familiar)
+        return render(request, 'task_detail.html', {'Usuario': Familiar, 'form': form})
+    else:
+        try:
+            familiar = get_object_or_404(Familiar, pk=Familiar_id, user=request.user)
+            form = UsuarioForm(request.POST, instance=Familiar)
+            form.save()
+            return redirect('main_funcionario')
+        except ValueError:
+            return render(request, 'task_detail.html', {'Usuario': familiar, 'form': form, 'error': 'Error updating user!.'})
+
+
+@login_required
+def delete_usuario(request, usuario_id):
+    familiar = get_object_or_404(Usuario, pk=usuario_id, user=request.user)
+    if request.method == 'POST':
+        familiar.delete()
+        return redirect('main_funcionario')
+
 
 @login_required
 def main_funcionario(request):

@@ -2,16 +2,16 @@
 
 <h2>Funcionario</h2>
 
-
+<h4>Lista de Familiares</h4>
 
 <ul>
-{% if Usuario %}
-  {% for u in Usuario %}
+{% if fam %}
+  {% for u in fam %}
   <li>
     <a href="">
-      <strong>{{Usuario.nombre}}</strong>
-      {{Usuario.id}} {{Usuario.rut}} 
-      <p>{{Usuario.relacion_paciente}}</p>      
+      <strong>{{fam.nombre}}</strong>
+      {{fam.id}} {{fam.rut}} 
+      <p>{{fam.relacion_paciente}}</p>      
     </a>
 </li>
 {% endfor %}

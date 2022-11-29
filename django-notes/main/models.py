@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -29,6 +30,9 @@ class Rol(models.Model):
         verbose_name_plural = "Roles"
         ordering= ["nombre_rol"]
 
+    def str(self):
+        return "%s" %(self.nombre_rol)
+
 class Persona(models.Model):
     rut = models.CharField(unique=True, max_length=15)
     nombre = models.CharField(max_length=20)
@@ -43,6 +47,10 @@ class Persona(models.Model):
         abstract = True
         verbose_name_plural = "Comunas"
         ordering= ["rut"]
+    
+    
+    def str(self):
+        return "%s" %(self.rut)
   
 class Usuario(Persona):
     email = models.CharField(max_length=80)
@@ -64,6 +72,7 @@ class Familiar(Usuario):
 
 class Funcionario(Usuario):
     cargo = models.CharField(max_length=30)
+    
 
     class Meta:
         db_table = 'funcionario'
