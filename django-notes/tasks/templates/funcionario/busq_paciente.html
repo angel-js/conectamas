@@ -1,0 +1,15 @@
+{% extends 'funcionario/base.html' %} {% block content %}
+
+<h2>Funcionario</h2>
+
+<h4>Busqueda de Pacientes</h4>
+
+<form action="{% url 'listado_paciente' %}" method="GET">
+    <input type="text" name="list_pac"/>
+    <button type="submit"  value="Buscar">Buscar</button>
+</form>
+
+
+{% endblock %}
+
+<!-- #value="busqueda_ficha.html" -->

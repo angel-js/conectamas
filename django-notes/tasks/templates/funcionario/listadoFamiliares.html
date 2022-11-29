@@ -9,9 +9,9 @@
   {% for u in fam %}
   <li>
     <a href="">
-      <strong>{{fam.nombre}}</strong>
-      {{fam.id}} {{fam.rut}} 
-      <p>{{fam.relacion_paciente}}</p>      
+      <strong>{{u.nombre}}</strong>
+      {{u.id}} {{u.rut}} 
+      <p>{{u.relacion_paciente}}</p>      
     </a>
 </li>
 {% endfor %}

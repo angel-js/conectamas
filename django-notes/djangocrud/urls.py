@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from tasks.views import home, signup, tasks, tasks_completed, signout, signin , create_task, task_detail, complete_task, delete_task
-from main.views import  create_usuario, complete_usuario, main_funcionario, create_paciente, familiaresListado
+from main.views import  create_usuario, complete_usuario, main_funcionario, create_paciente, familiaresListado, busqueda_pac, listado_paciente, paciente_detalle
 
 urlpatterns = [
     path('home/', home, name='home'),
@@ -32,12 +32,18 @@ urlpatterns = [
     path('tasks/<int:task_id>/delete', delete_task, name='delete_task'),
 
     #Paciente
+        #Create
     path('create_usuario/', create_usuario, name='create_usuario'),
     path('create_paciente/', create_paciente, name='create_paciente'),
-    path('main_funcionario/', main_funcionario, name='main_funcionario'),
-    path('lista_familiares/', familiaresListado, name='lista_familiares'),
+        #Read
+    path('buscar_paciente/', busqueda_pac, name='busqueda_pac'),
+    path('listado_paciente/', listado_paciente, name='listado_paciente'),
+    path('paciente_detalle/<int:paciente_id>/', paciente_detalle, name='paciente_detalle'),
     path('usuario/<int:usuario_id>', task_detail, name='usuario_detail'),
+        #Main
+    path('main_funcionario/', main_funcionario, name='main_funcionario'),
     path('usuario/<int:usuario_id>/complete', complete_usuario, name='complete_usuario'),
+    path('lista_familiares/', familiaresListado, name='lista_familiares'),
     path('usuario/<int:usuario_id>/delete', delete_task, name='delete_usuario'),
 
 ]

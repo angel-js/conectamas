@@ -1,0 +1,31 @@
+{% extends 'funcionario/base.html' %}
+
+{% block content %}
+
+<div class="row pt-3 m-3">
+  <div class="col-sm-3"></div>
+  <div class="col-sm-6">
+
+    {% if Usuario %}
+    <h3>Paciente: {{Usuario.nombre}} {{Usuario.apellido}}</h3>
+    <h6>Edad: {{Usuario.edad}} Sexo: {{Usuario.sexo_biologico}} Rut: {{Usuario.rut}} id: {{Usuario.id}}</h6>
+
+    {% else %}
+
+    <p>No hay pacientes registrados!</p>
+
+    {% endif %}
+  </div>
+  <div class="col-sm-3"></div>
+</div>
+<div class="row pt-3 m-3">
+  <div class="col-sm-3"></div>
+  <div class="col-sm-6">
+<form action="" >
+
+</form>
+
+  </div>
+  <div class="col-sm-3"></div>
+</div>
+{% endblock %}

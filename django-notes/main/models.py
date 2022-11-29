@@ -21,9 +21,9 @@ class Comentario(models.Model):
 class Rol(models.Model):
     nombre_rol = models.CharField(max_length=20)
     lectura = models.BooleanField(default=True) # This field type is a guess.
-    actualizar = models.BooleanField(default=True)  # This field type is a guess.
-    borrar = models.BooleanField(default=True)  # This field type is a guess.
-    crear = models.BooleanField(default=True)  # This field type is a guess. 
+    actualizar = models.BooleanField(default=False)  # This field type is a guess.
+    borrar = models.BooleanField(default=False)  # This field type is a guess.
+    crear = models.BooleanField(default=False)  # This field type is a guess. 
 
     class Meta:
         db_table = 'rol'
@@ -68,7 +68,7 @@ class Familiar(Usuario):
     class Meta:
         db_table = 'familiar'
         verbose_name_plural = "Familiares"
-        ordering= ["relacion_paciente"]
+        ordering= ["id"]
 
 class Funcionario(Usuario):
     cargo = models.CharField(max_length=30)
