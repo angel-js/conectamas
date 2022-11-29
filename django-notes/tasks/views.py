@@ -16,7 +16,7 @@ from .forms import TaskForm
 
 def signup(request):
     if request.method == 'GET':
-        return render(request, 'signup.html', {"form": UserCreationForm})
+        return render(request, 'sesion/signup.html', {"form": UserCreationForm})
     else:
 
         if request.POST["password1"] == request.POST["password2"]:
@@ -27,9 +27,9 @@ def signup(request):
                 login(request, user)
                 return redirect('create_usuario')
             except IntegrityError:
-                return render(request, 'signup.html', {"form": UserCreationForm, "error": "Username already exists."})
+                return render(request, 'sesion/signup.html', {"form": UserCreationForm, "error": "Username already exists."})
 
-        return render(request, 'signup.html', {"form": UserCreationForm, "error": "Passwords did not match."})
+        return render(request, 'sesion/signup.html', {"form": UserCreationForm, "error": "Passwords did not match."})
 
 
 
@@ -60,7 +60,7 @@ def create_task(request):
 
 
 def home(request):
-    return render(request, 'home.html')
+    return render(request, 'sesion/home.html')
 
 
 @login_required
@@ -71,12 +71,12 @@ def signout(request):
 
 def signin(request):
     if request.method == 'GET':
-        return render(request, 'signin.html', {"form": AuthenticationForm})
+        return render(request, 'sesion/signin.html', {"form": AuthenticationForm})
     else:
         user = authenticate(
             request, username=request.POST['username'], password=request.POST['password'])
         if user is None:
-            return render(request, 'signin.html', {"form": AuthenticationForm, "error": "Username or password is incorrect."})
+            return render(request, 'sesion/signin.html', {"form": AuthenticationForm, "error": "Username or password is incorrect."})
         elif user.is_staff:
             login(request, user)
             return redirect('main_funcionario')

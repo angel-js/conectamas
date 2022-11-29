@@ -8,6 +8,7 @@ class Comentario(models.Model):
     hora_comentario = models.TimeField()
     estado = models.CharField(max_length=20)  # Field name made lowercase.
     comentario = models.CharField( max_length=300)  # Field name made lowercase.
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     class Meta:
         db_table = 'Comentario'
@@ -42,6 +43,7 @@ class Persona(models.Model):
     sexo = models.CharField(max_length=10)
     id_rol = models.ForeignKey(Rol, on_delete=models.CASCADE, default=1)
 
+
     class Meta:
         db_table = 'persona'
         abstract = True
@@ -64,6 +66,7 @@ class Usuario(Persona):
 
 class Familiar(Usuario):
     relacion_paciente = models.CharField(max_length=30)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     class Meta:
         db_table = 'familiar'
@@ -72,7 +75,7 @@ class Familiar(Usuario):
 
 class Funcionario(Usuario):
     cargo = models.CharField(max_length=30)
-    
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     class Meta:
         db_table = 'funcionario'

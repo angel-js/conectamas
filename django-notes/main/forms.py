@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from main.models import Familiar, Paciente
+from main.models import Familiar, Paciente, Comentario
 from django import forms 
 
 class UsuarioForm(ModelForm):
@@ -14,4 +14,9 @@ class PacienteForm(ModelForm):
     class Meta:
         model = Paciente
         #fields = ['rut', 'nombre', 'apellido', 'edad', 'fecha_nacimiento', 'sexo', 'sexo_biologico']
+        fields = '__all__'
+
+class Comentario(ModelForm):
+    class Meta:
+        model = Comentario
         fields = '__all__'
