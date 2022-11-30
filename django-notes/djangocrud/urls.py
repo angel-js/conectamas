@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from tasks.views import home, signup, signout, signin
-from main.views import  create_usuario, comment_detail, comment_list, complete_usuario, main_funcionario, create_paciente, familiaresListado, busqueda_pac,  listado_paciente, paciente_detalle
+from main.views import  create_usuario, busqueda_pac_familiar, listado_paciente_familiar, paciente_detalle_familiar, comment_detail, comment_list, complete_usuario, main_funcionario, create_paciente, familiaresListado, busqueda_pac,  listado_paciente, paciente_detalle
 
 urlpatterns = [
     #Sesion
@@ -31,8 +31,11 @@ urlpatterns = [
     path('create_paciente/', create_paciente, name='create_paciente'),
         #Read
     path('buscar_paciente/', busqueda_pac, name='busqueda_pac'),
+    path('buscar_pacientef/', busqueda_pac_familiar, name='busqueda_pacf'),
     path('listado_paciente/', listado_paciente, name='listado_paciente'),
+    path('listado_pacientef/', listado_paciente_familiar, name='listado_paciente'),
     path('paciente_detalle/<int:paciente_id>/', paciente_detalle, name='paciente_detalle'),
+    path('paciente_detallef/<int:paciente_id>/', paciente_detalle_familiar, name='paciente_detalle'),
     #Funcionario
     path('main_funcionario/', main_funcionario, name='main_funcionario'),
     path('usuario/<int:usuario_id>/complete', complete_usuario, name='complete_usuario'),

@@ -11,21 +11,24 @@
 
 
 
-
-<ul>
-{% if Paciente %}
-  {% for p in Paciente %}
-  <li>
-    <a href="/paciente_detalle/{{p.id}}">
-      <strong>{{p.nombre}} {{p.apellido}}</strong>
-      {{p.id}} {{p.rut}}     
-    </a>
-</li>
-{% endfor %}
-{% else %} 
-{% endif %}
-</ul>
-
-
-
+<div class="row pt-5">
+  <div class="col-sm-3"></div>
+  <div class="col-sm-6 d-flex justify-content-center">
+    <ul>
+      {% if Paciente %}
+        {% for p in Paciente %}
+        <li>
+          <a href="/paciente_detalle/{{p.id}}">
+            <strong>{{p.nombre}} {{p.apellido}}</strong>
+            {{p.id}} {{p.rut}}     
+          </a>
+      </li>
+      {% endfor %}
+      {% else %} 
+      {% endif %}
+      </ul>
+  </div>
+  <div class="col-sm-3"></div>
+  </div>
+  
 {% endblock %}

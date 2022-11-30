@@ -63,6 +63,11 @@ def complete_usuario(request, usuario_id):
 def busqueda_pac(request):
     return render(request, "funcionario/busq_paciente.html") 
 
+# Busqueda Paciente - Vista de un Familiar
+@login_required
+def busqueda_pac_familiar(request):
+    return render(request, "paciente/busq_paciente.html") 
+
 #2 Busqueda Paciente (Listado)
 @login_required
 def listado_paciente(request):
@@ -74,6 +79,21 @@ def listado_paciente(request):
         else:
             pac=Paciente.objects.filter(nombre__icontains=ficha)
             return render(request, "funcionario/result_bus_paciente.html",{"query": ficha, "pac": pac})
+    else:
+        message="No has introducido nada!"
+    return HttpResponse(message)
+
+#2 Busqueda Paciente (Listado) - Vista de un Familiar
+@login_required
+def listado_paciente_familiar(request):
+    if request.GET["list_pac"]:
+        ficha=request.GET["list_pac"]
+        
+        if len(ficha) > 20:
+            message="Texto demasiado largo"
+        else:
+            pac=Paciente.objects.filter(nombre__icontains=ficha)
+            return render(request, "paciente/result_bus_paciente.html",{"query": ficha, "pac": pac})
             #return render(request, "funcionario/result_bus_paciente.html", {"paciente": paciente, "query":ficha})
     else:
         message="No has introducido nada!"
@@ -84,17 +104,37 @@ def listado_paciente(request):
 def paciente_detalle(request, paciente_id):
     if request.method == 'GET':
         paciente = get_object_or_404(Paciente, pk=paciente_id)
+        comm = Comentario.objects.all()
         formComent = ComentarioForm(instance=paciente)
-        return render(request, 'funcionario/paciente_detalle.html', {'Usuario': paciente, 'form': formComent})
+        return render(request, 'funcionario/paciente_detalle.html', {'Usuario': paciente, 'Comment':comm, 'form': formComent})
     else:
         try:
             paciente = get_object_or_404(Paciente, pk=paciente_id)
-            formComent = ComentarioForm(request.POST, instance=paciente)
-            formComent.save()
+            formComent = ComentarioForm(request.POST)
+            new_comment = formComent.save()
+            new_comment.user = request.user
+            new_comment.save()
             return redirect('main_funcionario')
         except ValueError:
-            return render(request, 'funcionario/paciente_detalle.html', {'Usuario': paciente, 'form': formComent, 'error': 'Error updating user!.'})
+            return render(request, 'funcionario/paciente_detalle.html', {'Usuario': paciente, 'form': formComent, 'error': 'Error updating Comment!.'})
     
+#3 Ingreso Ficha del Paciente - Vista de un Familiar
+@login_required
+def paciente_detalle_familiar(request, paciente_id):
+    if request.method == 'GET':
+        paciente = get_object_or_404(Paciente, pk=paciente_id)
+        comm = Comentario.objects.all()
+        formComent = ComentarioForm(instance=paciente)
+        return render(request, 'paciente/paciente_detalle.html', {'Usuario': paciente, 'Comment':comm, 'form': formComent})
+    else:
+        try:
+            paciente = get_object_or_404(Paciente, pk=paciente_id)
+            return redirect('home')
+        except ValueError:
+            return render(request, 'paciente/paciente_detalle.html', {'Usuario': paciente})
+    
+
+
 @login_required
 def usuario_detail(request, usuario_id):
     if request.method == 'GET':

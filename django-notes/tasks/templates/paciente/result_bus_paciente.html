@@ -1,0 +1,49 @@
+{% extends 'funcionario/base.html' %} 
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8 ">
+            <div class="d-flex justify-content-center">
+                <h3 class="mt-5 p-2">Resultados</h3> 
+            </div>
+            <div class="row d-flex justify-content-center">
+            </div>
+            <h5>Est&aacute;s buscando: <strong>{{query}}</strong></h5>
+            {% if pac %}
+                <p>Pacientes Encontrados: <strong>{{pac|length}}</strong> </p>
+
+                <ul>
+                    {% for p in pac %}
+                    <li>
+                        <a href="/paciente_detallef/{{p.id}}">
+                            {{p.nombre}}
+                            {{p.apellido}}<br/>
+                            edad: {{p.edad}}
+                            id: {{p.id}}
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No esta el paciente buscado</p>
+
+                <div class="row">
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-6">
+                        <a href="{% url 'buscar_pacientef' %}">
+                            <button type="submit" class="btn btn-lg btn-primary"> Buscar nuevamente</button>
+                        </a>
+                    </div>
+                    <div class="col-sm-3"></div>
+                </div>
+            {% endif %}
+        </div>
+        <div class="col-sm-2"></div>
+    </div>
+</div>
+</div>
+
+{% endblock %}
+
+<!-- #value="busqueda_ficha.html" -->
