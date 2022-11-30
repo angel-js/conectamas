@@ -1,19 +1,32 @@
 {% extends "sesion/base.html" %}
 
 {% block content %}
+  <div class="row m-5 pt-3">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+        <h1>Iniciar Sesion</h1>
+    </div>
+    <div class="col-sm-3"></div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+      <p>
+        {{error}}
+        </p>
+        
+        <form action="/signin/" method="POST">
+          {% csrf_token %}
+          {{form.as_p}}
+          <div class="d-flex justify-content-center">
+            <button>
+              Iniciar Sesi&oacute;n
+            </button>
+          </div>
+        </form>
+    </div>
+    <div class="col-sm-3"></div>
+  </div>
 
-<h1>Signin</h1>
-
-<p>
-{{error}}
-</p>
-
-<form action="/signin/" method="POST">
-  {% csrf_token %}
-  {{form.as_p}}
-  <button>
-    Signin
-  </button>
-</form>
 
 {% endblock %}

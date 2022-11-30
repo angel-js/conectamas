@@ -1,7 +1,58 @@
-{% extends 'sesion/base.html' %} {% block content %}
+{% extends 'sesion/base.html' %} 
 
-<div class="container">
-  <h1>Home</h1>
+{% load static %}
+
+{% block content %}
+<div class="jumbotron" style="background-image: url(./../static/enfermera2.jpg); background-size: 100%;">
+  <div class="container for-about">
+    <div class="row p-4 ">
+      <div class="d-flex justify-content-center mt-5">
+          <h1>Mantente m&aacute;s cerca que nunca</h1>
+      </div>
+   <div class="row pt-2">
+       <div class="d-flex justify-content-center"> 
+          <h3>Estado en tiempo real de esa persona que tanto te importa</h3>
+       </div>
+   </div>   
+   <div class="row mb-5">
+      <div class="d-flex justify-content-center">
+          <h2>Conecta+</h2>
+      </div>
+  </div>
+  <div class="row">
+      <div class="d-flex justify-content-center">
+
+<h5 class="mb-1">Bienvenidos a <em><strong>Conecta+</strong></em>, lo mejor es poder saber el estado médico de esa persona especial
+<br/>Queremos brindarte la mejor compañia y cercanía al paciente desde donde te encuentres</h5>
+</div>
+</div>
+</div>
+  </div>
+  <div>
+  </div>
+
+  <div class="row pt-7 ">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+      <h3 class="cuadro pt-3 m-3" >Puedes Iniciar Sesi&oacute;n &oacute; Registrarte!</h3>
+    </div>
+    <div class="col-sm-3"></div>
+  </div>
+  <div class="row pt-7 m 5 d-flex justify-content-center">
+    <div class="col-sm-3 pt-5 m-2 d-flex justify-content-center">
+      <a href="{% url 'signin' %}">
+        <button type="button" class="btn btn-primary btn-lg btn-block">Iniciar Sesi&oacute;n</button>
+      </a>
+    </div>
+    <div class="col-sm-3"></div>
+    <div class="col-sm-3 pt-5 m-2 d-flex justify-content-center">
+      <a href="{% url 'signup' %}">
+        <button type="button" class="btn btn-success btn-lg btn-block" id="23"> Registrarse</button>
+      </a>
+    </div>
+    <div class="col-sm-3 mb-5"></div>
+    <div class="espacio"></div>
+  </div>
 </div>
 
 {% endblock %}

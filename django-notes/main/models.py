@@ -1,5 +1,4 @@
 from django.db import models
-from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -8,7 +7,6 @@ class Comentario(models.Model):
     hora_comentario = models.TimeField()
     estado = models.CharField(max_length=20)  # Field name made lowercase.
     comentario = models.CharField( max_length=300)  # Field name made lowercase.
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     class Meta:
         db_table = 'Comentario'
@@ -16,7 +14,7 @@ class Comentario(models.Model):
         ordering= ["estado"]
 
     def __str__(self):
-        return self.estado + ' - ' + self.user.username
+        return self.estado 
 
 
 class Rol(models.Model):
@@ -66,8 +64,7 @@ class Usuario(Persona):
 
 class Familiar(Usuario):
     relacion_paciente = models.CharField(max_length=30)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-
+    
     class Meta:
         db_table = 'familiar'
         verbose_name_plural = "Familiares"
@@ -75,7 +72,6 @@ class Familiar(Usuario):
 
 class Funcionario(Usuario):
     cargo = models.CharField(max_length=30)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     class Meta:
         db_table = 'funcionario'

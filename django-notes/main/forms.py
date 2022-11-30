@@ -16,7 +16,7 @@ class PacienteForm(ModelForm):
         #fields = ['rut', 'nombre', 'apellido', 'edad', 'fecha_nacimiento', 'sexo', 'sexo_biologico']
         fields = '__all__'
 
-class Comentario(ModelForm):
+class ComentarioForm(ModelForm):
     class Meta:
         model = Comentario
         fields = '__all__'

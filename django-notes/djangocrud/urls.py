@@ -15,22 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from tasks.views import home, signup, tasks, tasks_completed, signout, signin , create_task, task_detail, complete_task, delete_task
-from main.views import  create_usuario, complete_usuario, main_funcionario, create_paciente, familiaresListado, busqueda_pac, listado_paciente, paciente_detalle
+from tasks.views import home, signup, signout, signin
+from main.views import  create_usuario, comment_detail, comment_list, complete_usuario, main_funcionario, create_paciente, familiaresListado, busqueda_pac,  listado_paciente, paciente_detalle
 
 urlpatterns = [
+    #Sesion
     path('home/', home, name='home'),
     path('admin/', admin.site.urls),
     path('signup/', signup, name='signup'),
-    path('tasks/', tasks, name='tasks'),
-    path('tasks_completed/', tasks_completed, name='tasks_completed'),
     path('logout/', signout, name='logout'),
     path('signin/', signin, name='signin'),
-    path('create_task/', create_task, name='create_task'),
-    path('tasks/<int:task_id>', task_detail, name='task_detail'),
-    path('taks/<int:task_id>/complete', complete_task, name='complete_task'),
-    path('tasks/<int:task_id>/delete', delete_task, name='delete_task'),
-
     #Paciente
         #Create
     path('create_usuario/', create_usuario, name='create_usuario'),
@@ -39,11 +33,13 @@ urlpatterns = [
     path('buscar_paciente/', busqueda_pac, name='busqueda_pac'),
     path('listado_paciente/', listado_paciente, name='listado_paciente'),
     path('paciente_detalle/<int:paciente_id>/', paciente_detalle, name='paciente_detalle'),
-    path('usuario/<int:usuario_id>', task_detail, name='usuario_detail'),
-        #Main
+    #Funcionario
     path('main_funcionario/', main_funcionario, name='main_funcionario'),
     path('usuario/<int:usuario_id>/complete', complete_usuario, name='complete_usuario'),
     path('lista_familiares/', familiaresListado, name='lista_familiares'),
-    path('usuario/<int:usuario_id>/delete', delete_task, name='delete_usuario'),
+        #Comentario
+    path('comentario/', comment_list, name='comentario'),
+    path('comentario/<int:pk>', comment_detail, name='comentario'),
+    
 
 ]

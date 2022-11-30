@@ -1,14 +1,29 @@
 {% extends 'funcionario/base.html' %} {% block content %}
 
-<h2>Funcionario</h2>
 
-<h4>Busqueda de Pacientes</h4>
 
-<form action="{% url 'listado_paciente' %}" method="GET">
-    <input type="text" name="list_pac"/>
-    <button type="submit"  value="Buscar">Buscar</button>
-</form>
-
+<div class="container-fluid">
+    <div class="row pt-5">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6">
+            <h2>Funcionario</h2>
+            <h4>Busqueda de Pacientes</h4>
+        </div>
+        <div class="col-sm-3"></div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row pt-2 m-3">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6">
+            <form action="{% url 'listado_paciente' %}" method="GET">
+                <input type="text" name="list_pac" />
+                <button type="submit" value="Buscar">Buscar</button>
+            </form>
+        </div>
+        <div class="col-sm-3"></div>
+    </div>
+</div>
 
 {% endblock %}
 

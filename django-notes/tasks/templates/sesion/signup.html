@@ -1,14 +1,23 @@
 {% extends 'sesion/base.html' %} 
 {% block content %}
 
-<div class="container">
-  <h1>Signup</h1>
+<div class="container-fluid">
+  <div class="row pt-5">
+  <div class="col-sm-3"></div>
+  <div class="col-sm-6">
+    <h1>Registrate!</h1>
 
-  {{error}}
+    {{error}}
+  
+    <form action="/signup/" method="POST">
+      {% csrf_token %} {{form.as_p}}
+      <div class="d-flex justify-content-center">
+        <button class="btn btn-primary">Registrarse</button>
+      </div>
+    </form>
+  </div>
+  </div>
+  </div>
+  <div class="col-sm-3"></div>
 
-  <form action="/signup/" method="POST">
-    {% csrf_token %} {{form.as_p}}
-    <button class="btn btn-primary">Signup</button>
-  </form>
-</div>
 {% endblock %}

@@ -1,22 +1,28 @@
-{% extends 'funcionario/base.html' %} {% block content %}
+{% extends 'funcionario/base.html' %}
+{% block content %}
 
-<h2>Funcionario</h2>
+<div class="row pt-5">
+<div class="col-sm-3"></div>
+<div class="col-sm-6 d-flex justify-content-center">
+  <h2>Funcionario</h2>
+</div>
+<div class="col-sm-3"></div>
+</div>
+
 
 
 
 <ul>
-{% if Usuario %}
-  {% for u in Usuario %}
+{% if Paciente %}
+  {% for p in Paciente %}
   <li>
-    <a href="">
-      <strong>{{Usuario.nombre}}</strong>
-      {{Usuario.id}} {{Usuario.rut}} 
-      <p>{{Usuario.relacion_paciente}}</p>      
+    <a href="/paciente_detalle/{{p.id}}">
+      <strong>{{p.nombre}} {{p.apellido}}</strong>
+      {{p.id}} {{p.rut}}     
     </a>
 </li>
 {% endfor %}
 {% else %} 
-<p>No hay Familiares registrados!</p>
 {% endif %}
 </ul>
 

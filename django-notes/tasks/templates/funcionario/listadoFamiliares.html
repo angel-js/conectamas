@@ -1,24 +1,41 @@
 {% extends 'funcionario/base.html' %} {% block content %}
 
-<h2>Funcionario</h2>
 
-<h4>Lista de Familiares</h4>
+<div class="container-fluid">
+  <div class="row pt-5">
+  <div class="col-sm-3"></div>
+  <div class="col-sm-6">
+    <h2>Funcionario</h2>
+    <h4>Lista de Familiares</h4>    
+  </div>
+  <div class="col-sm-3"></div>
+  </div>
+  </div>
 
-<ul>
-{% if fam %}
-  {% for u in fam %}
-  <li>
-    <a href="">
-      <strong>{{u.nombre}}</strong>
-      {{u.id}} {{u.rut}} 
-      <p>{{u.relacion_paciente}}</p>      
-    </a>
-</li>
-{% endfor %}
-{% else %} 
-<p>No hay Familiares registrados!</p>
-{% endif %}
-</ul>
+  <div class="container-fluid">
+    <div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+      <ul>
+        {% if fam %}
+          {% for u in fam %}
+          <li>
+            <a href="">
+              <strong>{{u.nombre}}</strong>
+              {{u.id}} {{u.rut}} 
+              <p>{{u.relacion_paciente}}</p>      
+            </a>
+        </li>
+        {% endfor %}
+        {% else %} 
+        <p>No hay Familiares registrados!</p>
+        {% endif %}
+        </ul>
+        
+    </div>
+    <div class="col-sm-3"></div>
+    </div>
+    </div>
 
 
 
