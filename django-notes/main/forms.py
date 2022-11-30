@@ -20,3 +20,4 @@ class ComentarioForm(ModelForm):
     class Meta:
         model = Comentario
         fields = '__all__'
+        
