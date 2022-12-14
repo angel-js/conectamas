@@ -26,10 +26,10 @@ urlpatterns = [
     path('logout/', signout, name='logout'),
     path('signin/', signin, name='signin'),
     #Paciente
-        #Create
+    #Create
     path('create_usuario/', create_usuario, name='create_usuario'),
     path('create_paciente/', create_paciente, name='create_paciente'),
-        #Read
+    #Read
     path('buscar_paciente/', busqueda_pac, name='busqueda_pac'),
     path('buscar_pacientef/', busqueda_pac_familiar, name='busqueda_pacf'),
     path('listado_paciente/', listado_paciente, name='listado_paciente'),
@@ -40,7 +40,7 @@ urlpatterns = [
     path('main_funcionario/', main_funcionario, name='main_funcionario'),
     path('usuario/<int:usuario_id>/complete', complete_usuario, name='complete_usuario'),
     path('lista_familiares/', familiaresListado, name='lista_familiares'),
-        #Comentario
+    #Comentario
     path('comentario/', comment_list, name='comentario'),
     path('comentario/<int:pk>', comment_detail, name='comentario'),
     

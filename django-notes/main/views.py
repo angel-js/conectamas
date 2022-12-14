@@ -93,7 +93,7 @@ def listado_paciente_familiar(request):
             message="Texto demasiado largo"
         else:
             pac=Paciente.objects.filter(nombre__icontains=ficha)
-            return render(request, "paciente/result_bus_paciente.html",{"query": ficha, "pac": pac})
+            return render(request, "funcionario/result_bus_paciente.html",{"query": ficha, "pac": pac})
             #return render(request, "funcionario/result_bus_paciente.html", {"paciente": paciente, "query":ficha})
     else:
         message="No has introducido nada!"
