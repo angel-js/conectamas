@@ -1,0 +1,66 @@
+body{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
+    overflow-x: hidden;
+}
+
+.jumbotron {
+    background-image: url(./overlay.png), url(./fondo-salud.gif);
+    background-position: top left, center center;
+    background-repeat: repeat, no-repeat;
+    background-size: auto, cover;
+    text-align: center;
+}
+.imagens{
+    background-image: url(./enfermera.jpg.gif);
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    color: white;
+    text-align: center;
+    border-radius: 20px;
+}
+
+h1{
+    color:rgb(10, 12, 48);
+}
+
+.titulo{
+    /*filter: blur(0.1px);
+    font-weight: 700;*/
+    font-size: 100px;
+    padding: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+
+.bajada {
+    color: rgb(2, 2, 2);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 15px;
+    background-color:#bcfdfbc6;
+    border-radius: 10px;
+    text-align: center;
+    padding: 1.2em;
+}
+
+
+h5{
+    background: rgba(255, 255, 255, 0.6);
+}
+
+div.espacio{
+    margin-bottom: 5%;
+}
+
+h2 .ins {
+    justify-content: center;
+}
+
+h4 {
+    font-family:Arial, Helvetica, sans-serif;
+    color: rgb(2, 2, 2);
+}

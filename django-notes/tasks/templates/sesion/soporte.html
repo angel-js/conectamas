@@ -1,0 +1,33 @@
+{% extends "sesion/base.html" %}
+
+{% block content %}
+  <div class="row m-5 pt-3">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+        <h1>Formulario de Soporte</h1>
+    </div>
+    <div class="col-sm-3"></div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+      <h3>Tienes algún problema con la plataforma <br>Favor rellena el formulario!</h3>
+      <p>
+        {{error}}
+        </p>
+        
+        <form action="" method="POST">
+          {{form.as_p}}
+          {% csrf_token %}
+          <div class="d-flex justify-content-center">
+            <button>
+             Enviar Solicitud
+            </button>
+          </div>
+        </form>
+    </div>
+    <div class="col-sm-3"></div>
+  </div>
+
+
+{% endblock %}

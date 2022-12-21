@@ -1,16 +1,18 @@
+from main.forms import UsuarioForm, PacienteForm, ComentarioForm, SoporteForm
 from django.shortcuts import render, redirect, get_object_or_404
-from main.forms import UsuarioForm, PacienteForm, ComentarioForm
 from django.contrib.auth.decorators import login_required
 from main.models import Familiar, Paciente, Comentario
+from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
-from django.contrib.auth.models import User
+from django.utils.decorators import method_decorator
 from django.http import HttpResponse, JsonResponse
+from main.serializers import ComentarioSerializer 
+from rest_framework.decorators import api_view
+from rest_framework.response import Response 
+from django.contrib.auth.models import User
+from rest_framework import status 
 from django.views import View 
 from ast import Delete
-from main.serializers import ComentarioSerializer 
-from rest_framework.response import Response 
-from rest_framework import status 
-from rest_framework.decorators import api_view
 
 # Create your views here.
 
@@ -219,3 +221,19 @@ def comment_detail (request, pk):
     if request.method == 'DELETE':
         comment.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+@login_required
+def soporteView(request):
+
+    if request.method == "GET":
+        data = {'form': SoporteForm}
+        return render(request, 'sesion/soporte.html', {"form": SoporteForm})
+    else:
+        try:
+            form = SoporteForm(request.POST)
+            new_sopt = form.save()
+            new_sopt.user = request.user
+            new_sopt.save()
+            return redirect('home')
+        except ValueError:
+            return render(request, 'sesion/soporte.html', {"form": form, "error": "Error creando el comentario!"})

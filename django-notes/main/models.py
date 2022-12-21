@@ -36,7 +36,6 @@ class Persona(models.Model):
     rut = models.CharField(unique=True, max_length=15)
     nombre = models.CharField(max_length=20)
     apellido = models.CharField(max_length=30)
-    edad = models.IntegerField()
     fecha_nacimiento = models.DateField()
     sexo = models.CharField(max_length=10)
     id_rol = models.ForeignKey(Rol, on_delete=models.CASCADE, default=1)
@@ -84,4 +83,15 @@ class Paciente(Persona):
     class Meta:
         db_table = 'paciente'
         verbose_name_plural = "Pacientes"
+        ordering= ["id"]
+
+class Soporte(models.Model):
+    nombre = models.CharField(max_length=20)
+    apellido = models.CharField(max_length=20)
+    email = models.CharField(max_length=80)
+    comentario = models.CharField(max_length=200)
+
+    class Meta:
+        db_table = 'Soporte'
+        verbose_name_plural = "Soportes"
         ordering= ["id"]
